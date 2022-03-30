@@ -20,7 +20,7 @@ ENV CATALINA_HOME /opt/apache-tomcat-8.0.26
 
 # clean
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN echo"pwd"
+RUN pwd
 COPY allowcation/allocations/target/allocations.jar   /opt/apache-tomcat-8.0.26/webapps/
 
 # expose ports
