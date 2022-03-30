@@ -4,16 +4,22 @@ pipeline {
   stages {
     stage('Checkout SCM') {
             steps {
-                 git 'https://github.com/arjundevop/pipeline.git'
+                 git '$git_repo'
             }
     }
     
     stage('build') {
       steps {
-        sh 'mvn -version'
-        sh 'mvn clean install'
+        sh 'mvn $version'
+        sh 'mvn clean $mvn'
     
       }
+    }
+    stage('dockerbuild')
+    {
+     steps {
+         sh 'docker build -t tomcat .'
+     }   
     }
    }
   }
